@@ -151,7 +151,7 @@ const Login = () => {
 					<div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
 						<div className="flex-1">
 							<div className="text-center">
-								<p className="mt-3 text-5xl font-cinzel font-semibold text-neutral-300">
+								<p className="mt-3 text-5xl font-cinzel font-semibold text-amber-500">
 									Sign In
 								</p>
 							</div>
@@ -223,7 +223,7 @@ const Login = () => {
 											<input
 												type="submit"
 												value={"Sign in"}
-												className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-amber-600 rounded-lg hover:bg-amber-500 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+												className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-amber-600 rounded-lg hover:bg-amber-500 focus:outline-none focus:bg-amber-400 focus:ring focus:ring-amber-400 focus:ring-opacity-50"
 											/>
 										</div>
 									</form>

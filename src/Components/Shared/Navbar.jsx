@@ -114,7 +114,7 @@ const Navbar = () => {
 						)}
 					</ul>
 				</div>
-				<Link to={"/"} className="font-cinzel text-3xl text-amber-500">
+				<Link to={"/"} className="font-cinzel text-3xl text-amber-400">
 					<button className="text-nowrap hover:font-semibold ml-4">
 						Majestic Oasis
 					</button>
@@ -127,7 +127,7 @@ const Navbar = () => {
 						<>
 							<Link
 								to={"/"}
-								className="underline  text-xl font-bold px-4 py-2"
+								className="text-lg text-lato font-light px-4 py-2"
 								onClick={() => logout()}
 							>
 								Logout
