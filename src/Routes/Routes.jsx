@@ -3,13 +3,14 @@ import Root from "../Layout/Root";
 import Home from "../Components/Home/Home";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root></Root>,
-    children: [{
-      path: "/",
-      element: <Home></Home>
-    }
-    ]
-  }
-])
+	{
+		path: "/",
+		element: <Root></Root>,
+		children: [
+			{
+				path: "/",
+				element: <Home></Home>,
+			},
+		],
+	},
+]);
