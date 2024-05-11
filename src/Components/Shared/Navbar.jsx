@@ -152,8 +152,7 @@ const Navbar = () => {
 							<li className="h-full">
 								<NavLink
 									to="/login"
-									className={`${({ isActive }) =>
-										isActive ? activeLinkAttr : ""} focus:text-white`}
+									className={({ isActive }) => (isActive ? activeLinkAttr : "")}
 								>
 									Login
 								</NavLink>
@@ -161,8 +160,7 @@ const Navbar = () => {
 							<li className="h-full">
 								<NavLink
 									to="/register"
-									className={`${({ isActive }) =>
-										isActive ? activeLinkAttr : ""}`}
+									className={({ isActive }) => (isActive ? activeLinkAttr : "")}
 								>
 									Register
 								</NavLink>
