@@ -55,7 +55,9 @@ const Login = () => {
 				successToast("Login Successful");
 				// console.log(userCredential.user.uid);
 				fetch(
-					`https://b9a10-server-side-gazi-fayaz.vercel.app/user/${userCredential.user.uid}`
+					`https://${import.meta.env.VITE_SERVER_URL}/user/${
+						userCredential.user.uid
+					}`
 				)
 					.then((res) => res.json())
 					.catch(() => {
@@ -64,14 +66,14 @@ const Login = () => {
 						const createdAt = userCredential.user?.metadata?.creationTime;
 						const user_email = userCredential.user.email;
 						const firebase_uid = userCredential.user.uid;
-						const tourist_spots = [];
+						const bookings = [];
 						const newUser = {
 							user_email,
 							firebase_uid,
-							tourist_spots,
+							bookings,
 							createdAt: createdAt,
 						};
-						fetch("https://b9a10-server-side-gazi-fayaz.vercel.app/user", {
+						fetch(`${import.meta.env.VITE_SERVER_URL}/user`, {
 							method: "POST",
 							headers: {
 								"content-type": "application/json",
@@ -103,7 +105,7 @@ const Login = () => {
 				successToast("Login Successful");
 				// console.log(userCredential.user.uid);
 				fetch(
-					`https://b9a10-server-side-gazi-fayaz.vercel.app/user/${userCredential.user.uid}`
+					`${import.meta.env.VITE_SERVER_URL}/user/${userCredential.user.uid}`
 				)
 					.then((res) => res.json())
 					.catch(() => {
@@ -112,14 +114,14 @@ const Login = () => {
 						const createdAt = userCredential.user?.metadata?.creationTime;
 						const user_email = userCredential.user.email;
 						const firebase_uid = userCredential.user.uid;
-						const tourist_spots = [];
+						const bookings = [];
 						const newUser = {
 							user_email,
 							firebase_uid,
-							tourist_spots,
+							bookings,
 							createdAt: createdAt,
 						};
-						fetch("https://b9a10-server-side-gazi-fayaz.vercel.app/user", {
+						fetch(`${import.meta.env.VITE_SERVER_URL}/user`, {
 							method: "POST",
 							headers: {
 								"content-type": "application/json",

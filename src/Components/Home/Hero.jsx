@@ -22,7 +22,7 @@ const Hero = () => {
 			<h1 className="text-center text-indigo-100 font-medium md:text-2xl md:tracking-wide">
 				Your Grand Escape Awaits in a Realm of Unparalleled Tranquility
 			</h1>
-			<Link to={"/book-now"}>
+			<Link to={"/rooms"}>
 				<button className="btn bg-black text-amber-400 text-lg border-amber-400 font-lato">
 					Book Now
 				</button>

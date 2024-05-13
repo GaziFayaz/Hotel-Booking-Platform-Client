@@ -68,7 +68,7 @@ const Register = () => {
 					bookings,
 					createdAt: createdAt,
 				};
-				fetch("https://b9a10-server-side-gazi-fayaz.vercel.app/user", {
+				fetch(`${import.meta.env.VITE_SERVER_URL}/user"`, {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",
