@@ -9,6 +9,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const RoomDetails = () => {
 	const { _id } = useParams();
@@ -27,20 +28,36 @@ const RoomDetails = () => {
 
 	const handleBook = () => {
 		if (user) {
-			axios.post(`${import.meta.env.VITE_SERVER_URL}/booking`, {
-				bookedBy: user.uid,
-				date: startDate,
-				room: room.category,
+			Swal.fire({
+				title: "Confirm Booking?",
+				html: `<b>Room</b>: ${room.category}<br /> <b>Price</b>: ${
+					room.price_per_night
+				} <br><b>Date</b>: ${startDate.toLocaleDateString()}`,
+				showCancelButton: true,
+				confirmButtonColor: "black",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Yes, delete it!",
+			}).then((result) => {
+				if (result.isConfirmed) {
+					axios.post(`${import.meta.env.VITE_SERVER_URL}/booking`, {
+						bookedBy: user.uid,
+						date: startDate,
+						room: room.category,
+					});
+					axios
+						.post(
+							`${import.meta.env.VITE_SERVER_URL}/book-room/${room._id}`,
+							{}
+						)
+						.then(() => {
+							setRoom({ ...room, availability: "Not Available" });
+						});
+					axios.post(
+						`${import.meta.env.VITE_SERVER_URL}/user-book-room/${user.uid}`,
+						{ roomId: room._id }
+					);
+				}
 			});
-			axios
-				.post(`${import.meta.env.VITE_SERVER_URL}/book-room/${room._id}`, {})
-				.then(() => {
-					setRoom({ ...room, availability: "Not Available" });
-				});
-			axios.post(
-				`${import.meta.env.VITE_SERVER_URL}/user-book-room/${user.uid}`,
-				{ roomId: room._id }
-			);
 		} else {
 			navigate("/login");
 		}
@@ -57,9 +74,9 @@ const RoomDetails = () => {
 			) : (
 				<div>
 					<div
-						className={`bg-gray-900 min-w-screen  py-36 md:py-0 min-h-64 bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel`}
+						className={`bg-gray-900 min-w-screen  py-20 md:py-0   md:min-h-48 lg:min-h-64 bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel`}
 					>
-						<h1 className="text-amber-400 text-5xl text-center">
+						<h1 className="text-amber-400 text-2xl md:text-4xl lg:text-5xl text-center">
 							{room.category}
 						</h1>
 					</div>
@@ -91,7 +108,7 @@ const RoomDetails = () => {
 								</Swiper>
 							</figure>
 							<div className="card-body lg:p-16 lg:space-y-5">
-								<h1 className="text-3xl font-lato font-bold">
+								<h1 className="text-2xl md:text-3xl font-lato font-bold">
 									{room.category}
 								</h1>
 								<p className="font-lato text-xl">{room.description}</p>
