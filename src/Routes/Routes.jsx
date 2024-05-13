@@ -4,6 +4,7 @@ import Home from "../Components/Home/Home";
 import Login from "../Components/Authentication/Login";
 import Register from "../Components/Authentication/Register";
 import Rooms from "../Components/Room/Rooms";
+import RoomDetails from "../Components/Room/RoomDetails";
 
 export const router = createBrowserRouter([
 	{
@@ -19,8 +20,8 @@ export const router = createBrowserRouter([
 				element: <Rooms></Rooms>,
 			},
 			{
-				path: "/room-details",
-				element: <Rooms></Rooms>,
+				path: "/room-details/:_id",
+				element: <RoomDetails></RoomDetails>,
 			},
 			{
 				path: "/login",
