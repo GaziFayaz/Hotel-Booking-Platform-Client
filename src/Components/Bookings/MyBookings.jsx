@@ -1,75 +1,24 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { useNavigate, useParams } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/bundle";
-import { Autoplay, Pagination } from "swiper/modules";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { AuthContext } from "../../Providers/AuthProvider";
-import Swal from "sweetalert2";
+import React, { useContext, useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../Providers/AuthProvider';
+import axios from 'axios';
 
-const RoomDetails = () => {
-	const { _id } = useParams();
-	const { user } = useContext(AuthContext);
-	const navigate = useNavigate();
-	const [room, setRoom] = useState({});
-	const [loading, setLoading] = useState(true);
-	const [startDate, setStartDate] = useState(new Date());
-	useEffect(() => {
-		axios.get(`${import.meta.env.VITE_SERVER_URL}/room/${_id}`).then((res) => {
-			console.log(res.data);
-			setRoom(res.data);
-			setLoading(false);
-		});
-	}, [_id]);
-
-	const handleBook = () => {
-		if (user) {
-			Swal.fire({
-				title: "Confirm Booking?",
-				html: `<b>Room</b>: ${room.category}<br /> <b>Price</b>: ${
-					room.price_per_night
-				} <br><b>Date</b>: ${startDate.toLocaleDateString()}`,
-				showCancelButton: true,
-				confirmButtonColor: "black",
-				cancelButtonColor: "#d33",
-				confirmButtonText: "Yes, Confirm!",
-			}).then((result) => {
-				if (result.isConfirmed) {
-					axios
-						.post(`${import.meta.env.VITE_SERVER_URL}/booking`, {
-							bookedBy: user.uid,
-							date: startDate,
-							room: room.category,
-						})
-						.then((res) => {
-							// console.log(res.data);
-							axios
-								.post(
-									`${import.meta.env.VITE_SERVER_URL}/book-room/${room._id}`,
-									{}
-								)
-								.then(() => {
-									setRoom({ ...room, availability: "Not Available" });
-								});
-							axios.post(
-								`${import.meta.env.VITE_SERVER_URL}/user-book-room/${user.uid}`,
-								{ roomId: res.data.insertedId }
-							);
-						});
-				}
-			});
-		} else {
-			navigate("/login");
-		}
-	};
-	return (
-		<div className=" flex flex-col mb-20">
+const MyBookings = () => {
+  const [loading, setLoading] = useState(true)
+  const [bookings, setBookings] = useState([])
+  const {user} = useContext(AuthContext)
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/user-bookings/${user.uid}`)
+    .then(res => {
+      // console.log(res.data)
+      setBookings(res.data)
+      setLoading(false)
+    })
+  }, [user.uid])
+  return (
+    <div className=" flex flex-col mb-20">
 			<Helmet>
-				<title>{`Majestic Oasis | ${room.category}`}</title>
+				<title>Majestic Oasis | My Bookings</title>
 			</Helmet>
 			{loading ? (
 				<div>
@@ -163,7 +112,7 @@ const RoomDetails = () => {
 				</div>
 			)}
 		</div>
-	);
-};
+  )
+}
 
-export default RoomDetails;
+export default MyBookings

@@ -55,7 +55,7 @@ const Login = () => {
 				successToast("Login Successful");
 				// console.log(userCredential.user.uid);
 				fetch(
-					`https://${import.meta.env.VITE_SERVER_URL}/user/${
+					`${import.meta.env.VITE_SERVER_URL}/user/${
 						userCredential.user.uid
 					}`
 				)
