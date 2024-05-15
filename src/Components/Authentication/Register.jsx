@@ -202,7 +202,7 @@ const Register = () => {
 												></BsEyeSlashFill>
 											)}
 										</div>
-
+											<p className="text-red-500">registration with email password is bugged right now. Use google sign in</p>
 										<div className="mt-6">
 											<input
 												type="submit"
