@@ -146,7 +146,7 @@ const Login = () => {
 					<title>Majestic Oasis | Login</title>
 				</Helmet>
 				<div className="flex flex-row-reverse justify-center h-screen bg-black">
-					<div className="hidden bg-cover lg:block lg:w-2/3 bg-[url(login-portrait.avif)] bg-bottom">
+					<div className="hidden bg-cover lg:block lg:w-2/3 bg-[url(https://i.ibb.co/5TDjrbr/login-portrait.jpg)] bg-bottom">
 						<div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40"></div>
 					</div>
 

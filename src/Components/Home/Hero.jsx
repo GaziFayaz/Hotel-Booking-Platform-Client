@@ -45,17 +45,17 @@ const Hero = () => {
 				modules={[Autoplay, Pagination, Navigation]}
 			>
 				<SwiperSlide>
-					<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(hero-3.jpg)] min-w-screen  py-36 md:py-0 md:min-h-screen bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
+					<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(https://i.ibb.co/Xym03NQ/hero-3.jpg)] min-w-screen  py-36 md:py-0 md:min-h-screen bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
 						{slideContent}
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(hero-1.webp)] min-w-screen  py-36 md:py-0 md:min-h-screen bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
+					<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(https://i.ibb.co/Tv5t61L/hero-1.webp)] min-w-screen  py-36 md:py-0 md:min-h-screen bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
 						{slideContent}
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(hero-2.webp)] min-w-screen  py-36 md:py-0 md:min-h-screen bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
+					<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(https://i.ibb.co/239tG4f/hero-2.webp)] min-w-screen  py-36 md:py-0 md:min-h-screen bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
 						{slideContent}
 					</div>
 				</SwiperSlide>

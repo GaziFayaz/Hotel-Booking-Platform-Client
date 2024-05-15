@@ -25,7 +25,7 @@ const Rooms = () => {
 			<Helmet>
 				<title>Majestic Oasis | Rooms</title>
 			</Helmet>
-			<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(hero-3.jpg)] min-w-screen  py-36 md:py-0 min-h-64 bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
+			<div className="bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6)),url(https://i.ibb.co/Xym03NQ/hero-3.jpg)] min-w-screen  py-36 md:py-0 min-h-64 bg-cover bg-center bg-no-repeat flex flex-col gap-10 items-center justify-center text-white font-cinzel ">
 				<h1 className="text-amber-400 text-5xl text-center">
 					Explore Our Luxury Offerings
 				</h1>

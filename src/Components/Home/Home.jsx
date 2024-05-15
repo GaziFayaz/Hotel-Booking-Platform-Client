@@ -70,7 +70,7 @@ const Home = () => {
 			</div>
 			<ReviewsCarousel></ReviewsCarousel>
 			<dialog id="my_modal_3" className="modal h-full">
-				<div className="modal-box min-w-2/3 md:min-w-1/2   min-h-1/2 lg:min-h-96 bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(hero-2.webp)] bg-cover bg-no-repeat bg-center">
+				<div className="modal-box min-w-2/3 md:min-w-1/2   min-h-1/2 lg:min-h-96 bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(https://i.ibb.co/239tG4f/hero-2.webp)] bg-cover bg-no-repeat bg-center">
 					<form method="dialog">
 						{/* if there is a button in form, it will close the modal */}
 						<button className="btn btn-sm btn-circle btn-ghost text-white text-2xl absolute right-2 top-2">
