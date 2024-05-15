@@ -10,6 +10,7 @@ import ReviewsCarousel from "./ReviewsCarousel";
 const Home = () => {
 	const [roomCategories, setRoomCategories] = useState([]);
 	useEffect(() => {
+		document.getElementById("my_modal_3").showModal();
 		axios
 			.get(`${import.meta.env.VITE_SERVER_URL}/room-categories`)
 			.then((res) => setRoomCategories(res.data));
@@ -68,6 +69,35 @@ const Home = () => {
 				</div>
 			</div>
 			<ReviewsCarousel></ReviewsCarousel>
+			<dialog id="my_modal_3" className="modal h-full">
+				<div className="modal-box min-w-2/3 md:min-w-1/2   min-h-1/2 lg:min-h-96 bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(hero-2.webp)] bg-cover bg-no-repeat bg-center">
+					<form method="dialog">
+						{/* if there is a button in form, it will close the modal */}
+						<button className="btn btn-sm btn-circle btn-ghost text-white text-2xl absolute right-2 top-2">
+							✕
+						</button>
+					</form>
+					<h3 className="font-bold text-2xl text-purple-400 mb-10">
+						Enjoy Speical Offers!
+					</h3>
+					<div className="flex flex-col gap-4">
+						{roomCategories.map((room) => {
+							if (room.special_offers) {
+								return (
+									<div key={room.category}>
+										<h1 className="font-bold text-amber-400 text-xl">
+											{room.category}
+										</h1>
+										<h1 className="text-white text-lg">
+											{room.special_offers}
+										</h1>
+									</div>
+								);
+							}
+						})}
+					</div>
+				</div>
+			</dialog>
 		</div>
 	);
 };

@@ -24,15 +24,19 @@ const RoomDetails = () => {
 			console.log(res.data);
 			setRoom(res.data);
 			console.log("reviews", res.data.reviews);
-			axios
-				.get(
-					`${import.meta.env.VITE_SERVER_URL}/room-reviews/${res.data.category}`
-				)
-				.then((res) => {
-					console.log("reviews from get", res.data);
-					setReviews(res.data);
-				});
-			setLoading(false);
+			if (res.data?.category) {
+				axios
+					.get(
+						`${import.meta.env.VITE_SERVER_URL}/room-reviews/${
+							res.data.category
+						}`
+					)
+					.then((res) => {
+						console.log("reviews from get", res.data);
+						setReviews(res.data);
+					});
+				setLoading(false);
+			}
 		});
 	}, [_id]);
 
@@ -175,7 +179,10 @@ const RoomDetails = () => {
 										<div className="w-full flex flex-col gap-4">
 											{reviews.map((review) => {
 												return (
-													<div className="p-2 md:p-6 bg-gray-300 rounded-lg" key={review._id}>
+													<div
+														className="p-2 md:p-6 bg-gray-300 rounded-lg"
+														key={review._id}
+													>
 														<h1 className="text-lg md:text-xl font-bold">
 															Rated: {review.rating}/5
 														</h1>

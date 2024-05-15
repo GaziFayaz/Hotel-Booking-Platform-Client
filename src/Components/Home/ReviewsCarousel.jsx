@@ -20,11 +20,12 @@ const ReviewsCarousel = () => {
 				<div className="carousel carousel-center w-2/3 p-4 space-x-4 rounded-box bg-gray-300">
 					{reviews.map((review) => {
 						return (
-							<div className="carousel-item px-10 py-6 bg-white flex flex-col rounded-lg" key={review._id}>
+							<div className="carousel-item lg:min-w-72 lg:px-4  py-6 bg-white flex flex-col rounded-lg" key={review._id}>
 								<div className="text-xl font-bold font-lato text-center mb-4"><span className="text-2xl">{review.rating}</span>/5</div>
                 <div className="text-lg font-bold mb-3"> {review.room}</div>
 								<div className="font-semibold mb-1">{review.displayName}</div>
 								<div>"{review.comment}"</div>
+								<div className="text-right text-sm">Submitted On: {new Date(review.timestamp).toLocaleDateString()} {new Date(review.timestamp).toLocaleTimeString()}</div>
 							</div>
 						);
 					})}
