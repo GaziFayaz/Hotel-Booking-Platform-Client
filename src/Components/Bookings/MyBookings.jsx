@@ -9,6 +9,8 @@ import { IoCloseSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import ReviewModal from "../Modal/ReviewModal";
+import moment from "moment";
+moment().format();
 
 const MyBookings = () => {
 	const [loading, setLoading] = useState(true);
@@ -45,7 +47,14 @@ const MyBookings = () => {
 		toast.success("Booking date has been Updated Successfully");
 	};
 
-	const handleDelete = (bookingId, room) => {
+	const handleDelete = (bookingId, bookingDate, room) => {
+		// console.log(moment(new Date(bookingDate)).diff(moment(new Date()), "days"));
+		if((moment(new Date(bookingDate)).diff(moment(new Date()), "days"))<1){
+			toast.error("Sorry, you can not cancel booking with less than one day left")
+			return
+		}
+		
+
 		Swal.fire({
 			title: "Are you sure?",
 			text: "You booking will be canceled!",
@@ -151,8 +160,8 @@ const MyBookings = () => {
 																<ReviewModal
 																	user={user}
 																	booking={booking}
-                                  bookings={bookings}
-                                  setBookings={setBookings}
+																	bookings={bookings}
+																	setBookings={setBookings}
 																></ReviewModal>
 															</>
 														)}
@@ -203,7 +212,11 @@ const MyBookings = () => {
 													<td>
 														<button
 															onClick={() =>
-																handleDelete(booking._id, booking.room)
+																handleDelete(
+																	booking._id,
+																	booking.date,
+																	booking.room
+																)
 															}
 															className="btn btn-error text-lg text-white"
 														>

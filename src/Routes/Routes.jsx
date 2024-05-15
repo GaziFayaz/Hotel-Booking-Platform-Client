@@ -7,6 +7,7 @@ import Rooms from "../Components/Room/Rooms";
 import RoomDetails from "../Components/Room/RoomDetails";
 import MyBookings from "../Components/Bookings/MyBookings";
 import PrivateRoutes from "./PrivateRoutes";
+import ErrorElement from "../Components/Error/ErrorElement";
 
 export const router = createBrowserRouter([
 	{
@@ -42,5 +43,6 @@ export const router = createBrowserRouter([
 				element: <Register></Register>,
 			},
 		],
+		errorElement: <ErrorElement></ErrorElement>,
 	},
 ]);
