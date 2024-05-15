@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
@@ -8,6 +8,7 @@ import { FaCheck } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import ReviewModal from "../Modal/ReviewModal";
 
 const MyBookings = () => {
 	const [loading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ const MyBookings = () => {
 		setUpdateClickedFor(null);
 		setSelectedDate(null);
 		setUpdateClicked(false);
-    toast.success("Booking date has been Updated Successfully");
+		toast.success("Booking date has been Updated Successfully");
 	};
 
 	const handleDelete = (bookingId, room) => {
@@ -81,7 +82,7 @@ const MyBookings = () => {
 								);
 							});
 					});
-          toast.success("Booking Cancelled");
+				toast.success("Booking Cancelled");
 			}
 		});
 	};
@@ -114,12 +115,12 @@ const MyBookings = () => {
 								<table className="table-lg w-full font-lato text-center font-bold">
 									{/* head */}
 									<thead>
-										<tr className="text-xl">
+										<tr className="text-lg">
 											<th></th>
 											<th>Date</th>
 											<th>Room</th>
 											<th>Price</th>
-											<th></th>
+											<th>Review</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -133,9 +134,28 @@ const MyBookings = () => {
 													<td className="text-lg">{booking.room}</td>
 													<td className="text-lg">{booking.price_per_night}</td>
 													<td>
-														<button className="btn bg-amber-500 text-lg text-white ">
-															Review
-														</button>
+														{booking.reviewed ? (
+															<p className="text-blue-600">Already Reviewed</p>
+														) : (
+															<>
+																<button
+																	onClick={() =>
+																		document
+																			.getElementById("my_modal_5")
+																			.showModal()
+																	}
+																	className="btn bg-amber-500 text-lg text-white "
+																>
+																	Review
+																</button>
+																<ReviewModal
+																	user={user}
+																	booking={booking}
+                                  bookings={bookings}
+                                  setBookings={setBookings}
+																></ReviewModal>
+															</>
+														)}
 													</td>
 													<td>
 														{updateClicked &&
