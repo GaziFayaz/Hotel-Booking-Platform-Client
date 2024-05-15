@@ -5,6 +5,7 @@ import Newsletter from "./Newsletter";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ReviewsCarousel from "./ReviewsCarousel";
 
 const Home = () => {
 	const [roomCategories, setRoomCategories] = useState([]);
@@ -21,7 +22,7 @@ const Home = () => {
 			<Hero></Hero>
 			<Location></Location>
 			<Newsletter></Newsletter>
-			<div className="w-full mt-6 md:mt-12 lg:mt-24">
+			<div className="rooms w-full mt-6 md:mt-12 lg:mt-24">
 				<h1 className="text-2xl md:text-4xl lg:text-5xl font-cinzel text-amber-500 text-center">
 					Featured Rooms
 				</h1>
@@ -66,6 +67,7 @@ const Home = () => {
 					))}
 				</div>
 			</div>
+			<ReviewsCarousel></ReviewsCarousel>
 		</div>
 	);
 };
