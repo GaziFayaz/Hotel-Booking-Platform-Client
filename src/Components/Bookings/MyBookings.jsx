@@ -23,7 +23,7 @@ const MyBookings = () => {
 		axios
 			.get(`${import.meta.env.VITE_SERVER_URL}/user-bookings/${user.uid}`)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
 				setBookings(res.data);
 				setLoading(false);
 			});
@@ -179,10 +179,10 @@ const MyBookings = () => {
 																	}
 																	onChange={(date) => {
 																		setSelectedDate(date);
-																		console.log(
-																			"type of date from onchange",
-																			typeof date
-																		);
+																		// console.log(
+																		// 	"type of date from onchange",
+																		// 	typeof date
+																		// );
 																	}}
 																/>
 																<FaCheck

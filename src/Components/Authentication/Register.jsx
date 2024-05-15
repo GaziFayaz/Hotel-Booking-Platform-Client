@@ -31,7 +31,7 @@ const Register = () => {
 	const { register, handleSubmit } = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		// console.log(data);
 		if (data.password.length < 6) {
 			errorToast("Password must be at least 6 characters");
 			if (!/[A-Z]/.test(data.password)) {
@@ -57,7 +57,7 @@ const Register = () => {
 			.then((userCredential) => {
 				// Signed up
         setUser({...user, photoURL: data.photoUrl, displayName: data.name})
-				console.log(userCredential);
+				// console.log(userCredential);
 				const createdAt = userCredential.user?.metadata?.creationTime;
 				const user_email = userCredential.user.email;
 				const firebase_uid = userCredential.user.uid;
@@ -77,18 +77,18 @@ const Register = () => {
 				});
 				customizeProfile(data.name, data.photoUrl)
 					.then((userCredential) => {
-						console.log(userCredential);
+						// console.log(userCredential);
 						successToast("Registration Successful");
 						return <Navigate to="/" />;
 					})
 					.catch((error) => {
-						console.log(error);
+						// console.log(error);
 					});
 
 				location.state ? navigate(location.state) : navigate(-1);
 			})
 			.catch((error) => {
-				console.log(error);
+				// console.log(error);
 				setLoading(false);
 				if (error.code === "auth/email-already-in-use") {
 					errorToast("Email is already in use");

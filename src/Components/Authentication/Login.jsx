@@ -33,10 +33,10 @@ const Login = () => {
 	const { register, handleSubmit } = useForm();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		// console.log(data);
 		signInEmailPassword(data.email, data.password)
 			.then((userCredential) => {
-				console.log(userCredential);
+				// console.log(userCredential);
 				successToast("Login Successful");
 				location.state ? navigate(location.state) : navigate(-1);
 			})
@@ -45,7 +45,7 @@ const Login = () => {
 				if (error.code === "auth/invalid-credential") {
 					errorToast("Invalid email or password");
 				}
-				console.log(error);
+				// console.log(error);
 			});
 	};
 
@@ -62,7 +62,7 @@ const Login = () => {
 					.then((res) => res.json())
 					.catch(() => {
 						// console.log(data)
-						console.log("new user");
+						// console.log("new user");
 						const createdAt = userCredential.user?.metadata?.creationTime;
 						const user_email = userCredential.user.email;
 						const firebase_uid = userCredential.user.uid;
@@ -110,7 +110,7 @@ const Login = () => {
 					.then((res) => res.json())
 					.catch(() => {
 						// console.log(data)
-						console.log("new user");
+						// console.log("new user");
 						const createdAt = userCredential.user?.metadata?.creationTime;
 						const user_email = userCredential.user.email;
 						const firebase_uid = userCredential.user.uid;
@@ -131,7 +131,7 @@ const Login = () => {
 					});
 			})
 			.catch((error) => {
-				console.log(error);
+				// console.log(error);
 				setLoading(false);
 				if (error.code === "auth/account-exists-with-different-credential") {
 					errorToast("Email is already in use");

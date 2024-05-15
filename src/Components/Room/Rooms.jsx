@@ -9,13 +9,13 @@ const Rooms = () => {
 	const [sorted, setSorted] = useState(false);
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
-		console.log(sorted);
+		// console.log(sorted);
 		axios
 			.get(
 				`${import.meta.env.VITE_SERVER_URL}/room-categories?sorted=${sorted}`
 			)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
 				setRoomCategories(res.data);
 				setLoading(false);
 			});
@@ -44,7 +44,7 @@ const Rooms = () => {
 			) : (
 				<div className="mt-8 lg:mt-8 md:mx-6 lg:mx-12 lg:gap-x-10 lg:gap-y-10 grid  lg:grid-cols-2">
 					{roomCategories.map((roomCategory) => {
-						console.log(roomCategory.reviews)
+						// console.log(roomCategory.reviews)
 						return (
 							<div
 								key={roomCategory._id}

@@ -15,11 +15,11 @@ const ReviewModal = ({ user, booking, bookings, setBookings }) => {
 			room: booking.room,
 			timestamp: new Date(),
 		};
-		console.log("review", review);
+		// console.log("review", review);
 		axios
 			.post(`${import.meta.env.VITE_SERVER_URL}/add-review`, review)
 			.then((res) => {
-				console.log("review added", res.data);
+				// console.log("review added", res.data);
 				const reviewId = res.data.insertedId;
 				if (reviewId) {
 					axios
@@ -30,7 +30,7 @@ const ReviewModal = ({ user, booking, bookings, setBookings }) => {
 							{ reviewId: reviewId }
 						)
 						.then((res) => {
-							console.log("user reviews update", res.data);
+							// console.log("user reviews update", res.data);
 						});
 					axios
 						.post(
@@ -40,7 +40,7 @@ const ReviewModal = ({ user, booking, bookings, setBookings }) => {
 							{ reviewId: reviewId }
 						)
 						.then((res) => {
-							console.log("room reviews update", res.data);
+							// console.log("room reviews update", res.data);
 						});
 					axios
 						.post(
@@ -49,7 +49,7 @@ const ReviewModal = ({ user, booking, bookings, setBookings }) => {
 							}`
 						)
 						.then((res) => {
-							console.log("booking review updated", res.data);
+							// console.log("booking review updated", res.data);
 							booking.reviewed = true;
 							setBookings(
 								bookings.filter((singleBooking) => {

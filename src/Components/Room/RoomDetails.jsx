@@ -21,9 +21,9 @@ const RoomDetails = () => {
 	const [startDate, setStartDate] = useState(new Date());
 	useEffect(() => {
 		axios.get(`${import.meta.env.VITE_SERVER_URL}/room/${_id}`).then((res) => {
-			console.log(res.data);
+			// console.log(res.data);
 			setRoom(res.data);
-			console.log("reviews", res.data.reviews);
+			// console.log("reviews", res.data.reviews);
 			if (res.data?.category) {
 				axios
 					.get(
@@ -32,7 +32,7 @@ const RoomDetails = () => {
 						}`
 					)
 					.then((res) => {
-						console.log("reviews from get", res.data);
+						// console.log("reviews from get", res.data);
 						setReviews(res.data);
 					});
 				setLoading(false);
@@ -155,7 +155,7 @@ const RoomDetails = () => {
 												selected={startDate}
 												onChange={(date) => {
 													setStartDate(date);
-													console.log(date);
+													// console.log(date);
 												}}
 											/>
 											<button
