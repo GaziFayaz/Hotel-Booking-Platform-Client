@@ -16,12 +16,22 @@ const RoomDetails = () => {
 	const { user } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const [room, setRoom] = useState({});
+	const [reviews, setReviews] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [startDate, setStartDate] = useState(new Date());
 	useEffect(() => {
 		axios.get(`${import.meta.env.VITE_SERVER_URL}/room/${_id}`).then((res) => {
 			console.log(res.data);
 			setRoom(res.data);
+			console.log("reviews", res.data.reviews);
+			axios
+				.get(
+					`${import.meta.env.VITE_SERVER_URL}/room-reviews/${res.data.category}`
+				)
+				.then((res) => {
+					console.log("reviews from get", res.data);
+					setReviews(res.data);
+				});
 			setLoading(false);
 		});
 	}, [_id]);
@@ -157,6 +167,28 @@ const RoomDetails = () => {
 										</p>
 									)}
 								</div>
+								{reviews && (
+									<div className="w-full bg-gray-900 px-4 md:px-10 py-3 md:py-6 rounded-xl md:rounded-3xl">
+										<h1 className="text-lg md:text-2xl text-amber-500 font-bold font-lato mb-2 md:mb-6">
+											Ratings
+										</h1>
+										<div className="w-full flex flex-col gap-4">
+											{reviews.map((review) => {
+												return (
+													<div className="p-2 md:p-6 bg-gray-300 rounded-lg" key={review._id}>
+														<h1 className="text-lg md:text-xl font-bold">
+															Rated: {review.rating}/5
+														</h1>
+														<h1 className="font-semibold">
+															{review.displayName}
+														</h1>
+														<p className="">"{review.comment}"</p>
+													</div>
+												);
+											})}
+										</div>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
